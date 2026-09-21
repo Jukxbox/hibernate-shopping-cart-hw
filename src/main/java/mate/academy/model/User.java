@@ -11,6 +11,7 @@ import jakarta.persistence.Table;
 @Table(name = "users")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
     private String email;

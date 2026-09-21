@@ -8,7 +8,7 @@ import java.util.List;
 public class ShoppingCart {
     @Id
     private Long id;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "shopping_cart_id")
     private List<Ticket> tickets;
     @OneToOne

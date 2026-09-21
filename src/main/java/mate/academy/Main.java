@@ -66,6 +66,6 @@ public class Main {
         shoppingCartService.registerNewShoppingCart(bob);
         shoppingCartService.addSession(tomorrowMovieSession, bob);
         shoppingCartService.getByUser(bob);
-        shoppingCartService.clear(shoppingCart);
+        shoppingCartService.clear(shoppingCartService.getByUser(bob));
     }
 }

@@ -8,10 +8,7 @@ import mate.academy.model.Movie;
 import mate.academy.model.MovieSession;
 import mate.academy.model.ShoppingCart;
 import mate.academy.model.User;
-import mate.academy.service.CinemaHallService;
-import mate.academy.service.MovieService;
-import mate.academy.service.MovieSessionService;
-import mate.academy.service.ShoppingCartService;
+import mate.academy.service.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -59,10 +56,14 @@ public class Main {
         System.out.println(movieSessionService.findAvailableSessions(
                 fastAndFurious.getId(), LocalDate.now()));
 
+        UserService userService = (UserService) injector.getInstance(UserService.class);
+        User bob = new User();
+        bob.setEmail("bob@gmail.com");
+        bob.setPassword("qwerty");
+        userService.add(bob);
+
         ShoppingCartService shoppingCartService =
                 (ShoppingCartService) injector.getInstance(ShoppingCartService.class);
-        User bob = new User();
-        ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCartService.registerNewShoppingCart(bob);
         shoppingCartService.addSession(tomorrowMovieSession, bob);
         shoppingCartService.getByUser(bob);
